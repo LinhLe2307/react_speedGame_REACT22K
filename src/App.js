@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "./components/Button";
 import Circle from "./components/Circle";
+import GameOver from "./components/GameOver";
 import { circles } from "./circles";
 
 const getRndInteger = (min, max) => {
@@ -11,7 +12,8 @@ class App extends Component {
   state = {
     // circles = [0,0,0,0] Could be here but when we have a lot of codes => not good
     score: 0,
-    current: 0,
+    current: -1,
+    showGameOver: false,
   };
 
   timer = undefined; // before we don't have it, it will be undefined
@@ -44,7 +46,17 @@ class App extends Component {
   };
 
   stopHandler = () => {
-    clearTimeout(this.timer); // because we don't want to break the code, so we clearTimeout first
+    clearTimeout(this.timer);
+    this.setState({ showGameOver: true });
+  };
+
+  closehandler = () => {
+    window.location.reload();
+    this.setState({
+      showGameOver: false,
+      score: 0,
+      current: -1,
+    });
   };
 
   render() {
@@ -54,11 +66,21 @@ class App extends Component {
         <p>Your score: {this.state.score} </p>
         <div className="circles">
           {circles.map((_, i) => (
-            <Circle key={i} id={i} click={() => this.clickHandler(i)} />
+            <Circle
+              key={i}
+              id={i}
+              click={() => this.clickHandler(i)}
+              active={this.state.current === i} // return boolean
+            />
           ))}
         </div>
-        <Button click={this.startHandler}>START</Button>
-        <Button click={this.stopHandler}>STOP</Button>
+        <div>
+          <Button click={this.startHandler}>START</Button>
+          <Button click={this.stopHandler}>STOP</Button>
+        </div>
+        {this.state.GameOver && (
+          <GameOver score={this.state.score} click={this.closeHandler} />
+        )}
       </div>
     );
   }

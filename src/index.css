@@ -59,7 +59,7 @@ button:hover {
   transform: scale(1.2);
 }
 
-#overlay {
+.overlay {
   visibility: hidden;
   position: fixed;
   top: 0;
