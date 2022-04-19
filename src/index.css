@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
 body {
-  font-family: "Dosis", sans-serif;
+  font-family: "Raleway", sans-serif;
   background-image: linear-gradient(#a984d1, #ddaee3);
   background-attachment: fixed;
   text-align: center;
@@ -60,26 +62,27 @@ button:hover {
 }
 
 .overlay {
-  visibility: hidden;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 100;
-  display: flex;
-  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  display: grid;
+  justify-items: center;
   align-items: center;
 }
 
 .modal {
-  background-color: white;
-  padding: 2rem;
+  background: white;
+  padding: 1rem;
   width: 40%;
-  height: 25%;
-  border-radius: 10px;
+  min-height: 25%;
+  border-radius: 5px;
   position: relative;
+  display: grid;
+  justify-items: center;
+  align-items: center;
 }
 
 .modal button {
@@ -95,6 +98,16 @@ button:hover {
 
 #stop {
   display: none;
+}
+
+.startHidden,
+.stopHidden {
+  display: none;
+}
+
+.stop,
+.start {
+  display: inline-block;
 }
 
 @media (max-width: 1200px) {
