@@ -3,10 +3,11 @@ import Button from "./components/Button";
 import Circle from "./components/Circle";
 import GameOver from "./components/GameOver";
 import { circles } from "./circles";
+import ButtonsDifficulty from "./components/ButtonsDifficulty";
 
-import startMusic from "./assets/sounds/friendly-melody.mp3";
-import stopMusic from "./assets/sounds/bass-drop.mp3";
-import click from "./assets/sounds/click.wav";
+import startMusic from "./assets/sounds/summer-night-piano-solo.mp3";
+import stopMusic from "./assets/sounds/level-win.mp3";
+import click from "./assets/sounds/interface-click.wav";
 
 // import './assets/img/sun.svg';
 
@@ -18,6 +19,7 @@ const getRndInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+// let circlesArray = [];
 class App extends Component {
   state = {
     // circles = [0,0,0,0] Could be here but when we have a lot of codes => not good
@@ -28,9 +30,42 @@ class App extends Component {
     rounds: 0, //How many mistakes a player can make before ending the game
     gameOn: false,
     showButton: true,
+    gameLevel: 0,
+    circlesArray: [],
+    buttonsLevel: true,
+    backgroundImage: "",
   };
 
   timer = undefined; // before we don't have it, it will be undefined. We use variable because we define it in 2 different places, start and end functions.
+
+  circlesDifficulty = {
+    easy: [
+      4,
+      "https://images.unsplash.com/photo-1499561385668-5ebdb06a79bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
+    ],
+    medium: [
+      6,
+      "https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+    ],
+    hard: [
+      8,
+      "https://images.unsplash.com/photo-1533760881669-80db4d7b4c15?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
+    ],
+  };
+
+  gameSetHandler = (level) => {
+    this.setState(
+      {
+        buttonsLevel: false,
+        gameLevel: this.circlesDifficulty[level][0],
+        backgroundImage: this.circlesDifficulty[level][1],
+        circlesArray: circles.filter(
+          (circle) => circle.id <= this.circlesDifficulty[level][0]
+        ),
+      },
+      () => console.log(this.circlesDifficulty[level][1])
+    );
+  };
 
   //create a new handler for sound, since this is a totally separate function
   clickPlay = () => {
@@ -48,7 +83,7 @@ class App extends Component {
       this.stopHandler();
       return; // because if we don't return anything, it will continue infinitely
     }
-    console.log("clickHandler, circle number:", i);
+
     this.setState({
       score: this.state.score + 10,
       rounds: this.state.rounds - 1,
@@ -60,6 +95,7 @@ class App extends Component {
       showButton: !prevState.showButton,
     }));
   };
+
   nextCircle = () => {
     if (this.state.rounds >= 3) {
       this.stopHandler();
@@ -69,23 +105,16 @@ class App extends Component {
     let nextActive;
 
     do {
-      nextActive = getRndInteger(0, 3);
+      nextActive = getRndInteger(1, this.state.gameLevel);
     } while (nextActive === this.state.current); // use simple loop to check and compare what number we have current and next ones
     // do ... while can be efficient while for ... loop can be increasing everytime.
+    console.log(nextActive);
+    this.setState({
+      current: nextActive,
+      pace: this.state.pace * 0.95, // faster everytime
+      rounds: this.state.rounds + 1,
+    });
 
-    this.setState(
-      {
-        current: nextActive,
-        pace: this.state.pace * 0.95, // faster everytime
-        rounds: this.state.rounds + 1,
-      }
-      // () => {
-      //   console.log("active circle inside:", this.state.current);
-      // }
-    );
-
-    // console.log("rounds:", this.state.rounds);
-    // console.log("active circle:", this.state.current);
     this.timer = setTimeout(this.nextCircle, this.state.pace);
   };
 
@@ -128,33 +157,47 @@ class App extends Component {
     }
 
     return (
-      <div>
-        <h1>Speedgame</h1>
-        <h2>Your score: {this.state.score} </h2>
-        <div className="circles">
-          {/* If we want to do with list, it is recommended to use map */}
-          {circles.map((_, i) => (
-            <Circle
-              key={i}
-              id={i}
-              click={() => this.clickHandler(i)}
-              active={this.state.current === i} // return boolean
-              disabled={this.state.gameOn}
-            />
-          ))}
-        </div>
-        <div>
-          {!this.state.gameOn && (
-            <Button click={this.startHandler}>START</Button>
-          )}
-          {this.state.gameOn && <Button click={this.stopHandler}>STOP</Button>}
-        </div>
-        {this.state.showGameOver && (
-          <GameOver
-            score={this.state.score}
-            click={this.closeHandler}
-            resultText={resultText}
-          />
+      <div
+        style={{
+          backgroundImage: `url(${this.state.backgroundImage})`,
+        }}
+      >
+        {this.state.buttonsLevel && (
+          <ButtonsDifficulty click={this.gameSetHandler} />
+        )}
+        {!this.state.buttonsLevel && (
+          <div>
+            <h1>Speedgame</h1>
+            <h2>Your score: {this.state.score} </h2>
+            <div className="circles">
+              {/* If we want to do with list, it is recommended to use map */}
+              {this.state.circlesArray.map((circle) => (
+                <Circle
+                  key={circle.id}
+                  id={circle.id}
+                  click={() => this.clickHandler(circle.id)}
+                  active={this.state.current === circle.id} // return boolean
+                  color={circle.color}
+                  disabled={this.state.gameOn}
+                />
+              ))}
+            </div>
+            <div>
+              {!this.state.gameOn && (
+                <Button click={this.startHandler}>START</Button>
+              )}
+              {this.state.gameOn && (
+                <Button click={this.stopHandler}>STOP</Button>
+              )}
+            </div>
+            {this.state.showGameOver && (
+              <GameOver
+                score={this.state.score}
+                click={this.closeHandler}
+                resultText={resultText}
+              />
+            )}
+          </div>
         )}
       </div>
     );

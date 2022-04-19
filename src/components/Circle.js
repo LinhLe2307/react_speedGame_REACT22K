@@ -3,11 +3,14 @@ import React from "react";
 const Circle = (props) => {
   return (
     <div
-      style={{ pointerEvents: props.disabled ? "auto" : "none" }} // because this is only one property, it is easier to do inline style
+      style={{
+        pointerEvents: props.disabled ? "auto" : "none",
+        backgroundColor: props.color,
+      }} // because this is only one property, it is easier to do inline style
       className={`circle ${props.active ? "active" : ""} `}
       onClick={props.click}
     >
-      {props.id}
+      {/* {props.id} */}
     </div>
   );
 };

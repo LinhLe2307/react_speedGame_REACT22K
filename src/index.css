@@ -2,10 +2,22 @@
 
 body {
   font-family: "Raleway", sans-serif;
-  background-image: linear-gradient(#a984d1, #ddaee3);
+  background: white;
+  /* background-image: linear-gradient(#a984d1, #ddaee3); */
   background-attachment: fixed;
   text-align: center;
+  /* background-image: url("https://preview.redd.it/rst1pkssd4f71.png?auto=webp&s=ddd41d3f86acbbe4c69b2f3f630d62208e67a3ea"); */
+  /* background-image: url("./assets/images/370969.jpg"); */
+  /* background-image: url("https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"); */
+  /* background-image: url("https://images.unsplash.com/photo-1516815231560-8f41ec531527?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2067&q=80"); */
+  /* background-image: url("https://images.unsplash.com/photo-1586902197503-e71026292412?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80"); */
+  background-image: url("https://images.unsplash.com/photo-1499561385668-5ebdb06a79bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80");
+  background-size: cover;
 }
+
+/* .main-page {
+  
+} */
 h1 {
   font-size: 2rem;
 }
@@ -24,14 +36,15 @@ h1 {
   display: flex;
   flex-flow: row wrap;
   margin: 0 auto;
-  width: 600px;
+  width: 800px;
   justify-content: space-between;
+  gap: 2rem;
 }
 
 .circle {
-  height: 125px;
-  width: 125px;
-  background-color: #f5cdff;
+  height: 150px;
+  width: 150px;
+  /* background-color: #f5cdff; */
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -41,9 +54,10 @@ h1 {
 
 .circle.active {
   background-color: #fff225;
-  background: url("https://as2.ftcdn.net/v2/jpg/04/34/74/41/1000_F_434744139_yqDjTwer52TYI2xDTzPeGV2PxTOWPfiD.jpg");
+  background: url("./assets/images/Shiba.png");
+  /* background: url("https://as2.ftcdn.net/v2/jpg/04/34/74/41/1000_F_434744139_yqDjTwer52TYI2xDTzPeGV2PxTOWPfiD.jpg"); */
   background-position: center;
-  background-size: 150px;
+  background-size: 230px;
 }
 
 button {
