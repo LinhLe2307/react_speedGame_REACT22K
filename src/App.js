@@ -9,6 +9,11 @@ import startMusic from "./assets/sounds/summer-night-piano-solo.mp3";
 import stopMusic from "./assets/sounds/level-win.mp3";
 import click from "./assets/sounds/interface-click.wav";
 
+import coverPhoto from "./assets/images/cover-photo.png";
+import essyPhoto from "./assets/images/easy-level-photo.png";
+import mediumPhoto from "./assets/images/medium-level-photo.png";
+import hardPhoto from "./assets/images/hard-level-photo.png";
+
 // import './assets/img/sun.svg';
 
 let clickSound = new Audio(click);
@@ -19,7 +24,6 @@ const getRndInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-// let circlesArray = [];
 class App extends Component {
   state = {
     // circles = [0,0,0,0] Could be here but when we have a lot of codes => not good
@@ -39,32 +43,29 @@ class App extends Component {
   timer = undefined; // before we don't have it, it will be undefined. We use variable because we define it in 2 different places, start and end functions.
 
   circlesDifficulty = {
-    easy: [
-      4,
-      "https://images.unsplash.com/photo-1499561385668-5ebdb06a79bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
-    ],
-    medium: [
-      6,
-      "https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
-    ],
-    hard: [
-      8,
-      "https://images.unsplash.com/photo-1533760881669-80db4d7b4c15?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
-    ],
+    easy: {
+      length: 4,
+      backgroundImage: essyPhoto,
+    },
+    medium: {
+      length: 6,
+      backgroundImage: mediumPhoto,
+    },
+    hard: {
+      length: 8,
+      backgroundImage: hardPhoto,
+    },
   };
 
   gameSetHandler = (level) => {
-    this.setState(
-      {
-        buttonsLevel: false,
-        gameLevel: this.circlesDifficulty[level][0],
-        backgroundImage: this.circlesDifficulty[level][1],
-        circlesArray: circles.filter(
-          (circle) => circle.id <= this.circlesDifficulty[level][0]
-        ),
-      },
-      () => console.log(this.circlesDifficulty[level][1])
-    );
+    this.setState({
+      buttonsLevel: false,
+      gameLevel: this.circlesDifficulty[level].length,
+      backgroundImage: this.circlesDifficulty[level].backgroundImage,
+      circlesArray: circles.filter(
+        (circle) => circle.id <= this.circlesDifficulty[level].length
+      ),
+    });
   };
 
   //create a new handler for sound, since this is a totally separate function
@@ -158,8 +159,11 @@ class App extends Component {
 
     return (
       <div
+        className="container"
         style={{
-          backgroundImage: `url(${this.state.backgroundImage})`,
+          backgroundImage: `url(${
+            !this.state.buttonsLevel ? this.state.backgroundImage : coverPhoto
+          })`,
         }}
       >
         {this.state.buttonsLevel && (

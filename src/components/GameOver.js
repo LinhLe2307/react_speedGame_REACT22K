@@ -2,7 +2,6 @@ import React from "react";
 import Button from "./Button.js";
 
 const GameOver = (props) => {
-
   // This result could be here when App.js is already overwhelmed
   // let resultText = "";
   // if (props.score <= 50) {
@@ -15,9 +14,9 @@ const GameOver = (props) => {
   return (
     <div className="overlay">
       <div className="modal">
-        <h2>GAME OVER</h2>
-        <h3>Score has: {props.score}</h3>
-        <p>{props.resultText}</p>
+        <h1>GAME OVER</h1>
+        <h2>Score has: {props.score}</h2>
+        <h3>{props.resultText}</h3>
         <Button click={props.click}>X</Button>
       </div>
     </div>
