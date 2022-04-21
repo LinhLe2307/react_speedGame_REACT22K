@@ -1,12 +1,12 @@
 import React from "react";
-// import Button from "./Button";
+import Button from "./Button";
 
 const OpeningPage = (props) => {
   return (
     <div>
-      <button onClick={() => props.click("easy")}>Easy</button>
-      <button onClick={() => props.click("medium")}>Medium</button>
-      <button onClick={() => props.click("hard")}>Hard</button>
+      <Button click={() => props.click("easy")}>Easy</Button>
+      <Button click={() => props.click("medium")}>Medium</Button>
+      <Button click={() => props.click("hard")}>Hard</Button>
     </div>
   );
 };
