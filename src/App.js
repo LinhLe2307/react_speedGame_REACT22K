@@ -14,8 +14,6 @@ import essyPhoto from "./assets/images/easy-level-photo.jpg";
 import mediumPhoto from "./assets/images/medium-level-photo.jpg";
 import hardPhoto from "./assets/images/hard-level-photo-2.jpg";
 
-// import './assets/img/sun.svg';
-
 let clickSound = new Audio(click);
 let startSound = new Audio(startMusic);
 let stopSound = new Audio(stopMusic);
@@ -149,8 +147,6 @@ class App extends Component {
 
   startHandler = () => {
     this.startPlay();
-    // startSound.play();
-    // startSound.loop = true;
     this.nextCircle(); // this is for highlight, so it has its own function
     this.setState((prevState) => ({
       playingGame: {
@@ -161,7 +157,6 @@ class App extends Component {
   };
 
   stopHandler = () => {
-    // stopSound.play();
     startSound.pause(); // it is pause(), not stop()
     this.stopPlay();
 
@@ -242,9 +237,6 @@ class App extends Component {
             <div
               className="circles"
               style={{
-                //   // width: `${
-                //   //   this.state.gameDifficulty.gameLevel === 6 ? "600px" : "800px"
-                //   // }`,
                 gridTemplateColumns: `${
                   this.state.gameDifficulty.gameLevel === 6
                     ? "repeat(3, 1fr)"
