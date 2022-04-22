@@ -1,2 +1,5 @@
-This is a school project where users can play speed game. 
-There are three differrent modes including: Easy, Medium and Hard. 
+This is a school project where users can play speed game during a certain amount of time. 
+There are three differrent modes including: 
+- Easy
+- Medium 
+- Hard
