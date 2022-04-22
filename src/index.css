@@ -152,6 +152,12 @@ button:hover {
   display: none;
 }
 
+.back-button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 .startHidden,
 .stopHidden {
   display: none;

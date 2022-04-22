@@ -10,8 +10,8 @@ import stopMusic from "./assets/sounds/level-win.mp3";
 import click from "./assets/sounds/interface-click.wav";
 
 import coverPhoto from "./assets/images/cover-photo-4.png";
-import essyPhoto from "./assets/images/easy-level-photo.png";
-import mediumPhoto from "./assets/images/medium-level-photo-2.jpg";
+import essyPhoto from "./assets/images/easy-level-photo.jpg";
+import mediumPhoto from "./assets/images/medium-level-photo.jpg";
 import hardPhoto from "./assets/images/hard-level-photo-2.jpg";
 
 // import './assets/img/sun.svg';
@@ -62,7 +62,6 @@ class App extends Component {
   };
 
   gameSetHandler = (level) => {
-    console.log(level);
     this.setState(
       (prevState) => ({
         gameDifficulty: {
@@ -74,7 +73,6 @@ class App extends Component {
             (circle) => circle.id <= this.circlesDifficulty[level].length
           ),
         },
-        // ...prevState,
       }),
       () => console.log(this.state.gameLevel)
     );
@@ -87,6 +85,21 @@ class App extends Component {
       clickSound.play();
     } else {
       clickSound.currentTime = 0; // if it plays, start from the beginning
+    }
+  };
+
+  startPlay = () => {
+    if (startSound.paused) {
+      startSound.play();
+    } else {
+      startSound.currentTime = 0;
+    }
+  };
+  stopPlay = () => {
+    if (stopSound.paused) {
+      stopSound.play();
+    } else {
+      stopSound.currentTime = 0;
     }
   };
 
@@ -128,7 +141,6 @@ class App extends Component {
     } while (nextActive === this.state.playingGame.current); // use simple loop to check and compare what number we have current and next ones
 
     // do ... while can be efficient while for ... loop can be increasing everytime.
-    console.log(nextActive);
     this.setState((prevState) => ({
       playingGame: {
         ...prevState.playingGame,
@@ -142,8 +154,9 @@ class App extends Component {
   };
 
   startHandler = () => {
-    startSound.play();
-    startSound.loop = true;
+    this.startPlay();
+    // startSound.play();
+    // startSound.loop = true;
     this.nextCircle(); // this is for highlight, so it has its own function
     this.setState((prevState) => ({
       playingGame: {
@@ -154,8 +167,10 @@ class App extends Component {
   };
 
   stopHandler = () => {
-    stopSound.play();
+    // stopSound.play();
     startSound.pause(); // it is pause(), not stop()
+    this.stopPlay();
+
     clearTimeout(this.timer);
     this.setState((prevState) => ({
       playingGame: {
@@ -166,14 +181,27 @@ class App extends Component {
   };
 
   closeHandler = () => {
-    window.location.reload();
+    stopSound.pause();
+    // window.location.reload();
 
-    // This is the same as window.location.reload(); so we don't need to manually setState it.
-    // this.setState({
-    //   showGameOver: false,
-    //   score: 0,
-    //   current: -1,
-    // });
+    // This is the same as window.location.reload(); but we need to be in Game Difficulty mode
+    this.setState((prevState) => ({
+      playingGame: {
+        ...prevState.playingGame,
+        showGameOver: false,
+        score: 0,
+        current: -1,
+        showGameOver: false,
+        pace: 1500,
+        rounds: 0, //How many turns a player can miss before ending the game
+        gameOn: false,
+        showButton: true,
+      },
+    }));
+  };
+
+  backHandler = () => {
+    window.location.reload();
   };
 
   render() {
@@ -213,11 +241,18 @@ class App extends Component {
         )}
         {!this.state.gameDifficulty.buttonsLevel && (
           <div>
+            <Button className="back-button" click={this.backHandler}>
+              BACK
+            </Button>
             <h1 id="speed-game">Speedgame</h1>
             <h2>Your score: {this.state.playingGame.score} </h2>
-            <div 
-              className="circles" 
-              style={{ width: `${this.state.gameDifficulty.gameLevel === 6 ? "600px" : "800px"}` }}
+            <div
+              className="circles"
+              style={{
+                width: `${
+                  this.state.gameDifficulty.gameLevel === 6 ? "600px" : "800px"
+                }`,
+              }}
             >
               {/* If we want to do with list, it is recommended to use map */}
               {this.state.gameDifficulty.circlesArray.map((circle) => (
@@ -239,18 +274,18 @@ class App extends Component {
                 <Button click={this.stopHandler}>STOP</Button>
               )}
             </div>
-            {this.state.playingGame.showGameOver && (
-              <GameOver
-                score={this.state.playingGame.score}
-                click={this.closeHandler}
-                resultText={resultText}
-              />
-            )}
           </div>
         )}
         <footer>
           <h5>All the pictures are licensed under the Unsplash License</h5>
         </footer>
+        {this.state.playingGame.showGameOver && (
+          <GameOver
+            score={this.state.playingGame.score}
+            click={this.closeHandler}
+            resultText={resultText}
+          />
+        )}
       </div>
     );
   }
