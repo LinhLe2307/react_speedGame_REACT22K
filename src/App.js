@@ -11,8 +11,8 @@ import click from "./assets/sounds/interface-click.wav";
 
 import coverPhoto from "./assets/images/cover-photo-4.png";
 import essyPhoto from "./assets/images/easy-level-photo.png";
-import mediumPhoto from "./assets/images/medium-level-photo.png";
-import hardPhoto from "./assets/images/hard-level-photo.png";
+import mediumPhoto from "./assets/images/medium-level-photo-2.jpg";
+import hardPhoto from "./assets/images/hard-level-photo-2.jpg";
 
 // import './assets/img/sun.svg';
 
@@ -32,7 +32,7 @@ class App extends Component {
       current: -1,
       showGameOver: false,
       pace: 1500,
-      rounds: 0, //How many mistakes a player can make before ending the game
+      rounds: 0, //How many turns a player can miss before ending the game
       gameOn: false,
       showButton: true,
     },
@@ -215,7 +215,10 @@ class App extends Component {
           <div>
             <h1 id="speed-game">Speedgame</h1>
             <h2>Your score: {this.state.playingGame.score} </h2>
-            <div className="circles">
+            <div 
+              className="circles" 
+              style={{ width: `${this.state.gameDifficulty.gameLevel === 6 ? "600px" : "800px"}` }}
+            >
               {/* If we want to do with list, it is recommended to use map */}
               {this.state.gameDifficulty.circlesArray.map((circle) => (
                 <Circle
@@ -246,7 +249,7 @@ class App extends Component {
           </div>
         )}
         <footer>
-          <p>All the pictures are licensed under the Unsplash License</p>
+          <h5>All the pictures are licensed under the Unsplash License</h5>
         </footer>
       </div>
     );

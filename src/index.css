@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
 }
+
 :root {
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
@@ -12,6 +13,7 @@
   --text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
   --background-shadow: 5px 5px 15px #d1d9e6, -5px -5px 15px #ffffff;
 }
+
 body {
   font-family: "Rubik Moonrocks", cursive;
   color: rgb(255, 255, 255);
@@ -23,7 +25,7 @@ body {
 .container {
   background: white;
   background-size: cover;
-  background-position: 0 10%;
+  /* background-position: 0 10%; */
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -31,13 +33,6 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 2rem;
-}
-
-footer {
-  color: rgb(255, 255, 255);
-  font-family: "Raleway";
-  text-shadow: none;
-  text-align: end;
 }
 
 h1 {
@@ -53,7 +48,7 @@ h1 {
 
 #author {
   font-size: 2rem;
-  align-items: flex-start;
+  /* align-items: flex-start; */
 }
 
 #speed-game {
@@ -64,19 +59,19 @@ h1 {
   color: #ffffff;
 }
 
-.gamearea > h2 {
+.gamearea>h2 {
   color: #ffffff;
 }
 
 #score {
   font-size: 2rem;
 }
+
 .circles {
   padding: 2rem;
   display: flex;
   flex-flow: row wrap;
   margin: 0 auto;
-  width: 800px;
   justify-content: space-between;
   gap: 2rem;
 }
@@ -133,7 +128,7 @@ button:hover {
   background: white;
   padding: 1rem;
   width: 40%;
-  min-height: 25%;
+  min-height: 30%;
   border-radius: 5px;
   position: relative;
   display: grid;
@@ -146,6 +141,7 @@ button:hover {
   top: 0;
   right: 0;
   background-color: transparent;
+  width: 3rem;
 }
 
 #result {
@@ -166,10 +162,43 @@ button:hover {
   display: inline-block;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  font-family: "Raleway";
+  text-shadow: none;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 1200px) {
-  .circles {
+  /* .circles {
     width: 100%;
     justify-content: center;
     gap: 2rem;
+  } */
+}
+
+@media (max-width: 575px) {
+  .container {
+    width: auto;
+    height: 100%;
+    padding-top: 2rem;
+  }
+
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .circles {
+    width: auto;
+  }
+
+  .circle {
+    /* flex: 0 0 45%; */
+    width: 120px;
+    height: 120px;
   }
 }
