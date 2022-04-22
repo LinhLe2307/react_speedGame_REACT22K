@@ -242,8 +242,13 @@ class App extends Component {
             <div
               className="circles"
               style={{
-                width: `${
-                  this.state.gameDifficulty.gameLevel === 6 ? "600px" : "800px"
+                //   // width: `${
+                //   //   this.state.gameDifficulty.gameLevel === 6 ? "600px" : "800px"
+                //   // }`,
+                gridTemplateColumns: `${
+                  this.state.gameDifficulty.gameLevel === 6
+                    ? "repeat(3, 1fr)"
+                    : "repeat(4, 1fr)"
                 }`,
               }}
             >

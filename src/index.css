@@ -69,16 +69,19 @@ h1 {
 
 .circles {
   padding: 2rem;
-  display: flex;
-  flex-flow: row wrap;
+  /* display: flex;
+  flex-flow: row wrap; */
   margin: 0 auto;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   gap: 2rem;
 }
 
 .circle {
-  height: 150px;
-  width: 150px;
+  height: 140px;
+  width: 140px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -92,7 +95,7 @@ h1 {
   background-color: #fff225;
   background: url("./assets/images/Shiba.png");
   background-position: center;
-  background-size: 230px;
+  background-size: 210px;
 }
 
 button {
@@ -130,10 +133,10 @@ button:hover {
   width: 40%;
   min-height: 30%;
   border-radius: 5px;
-  position: relative;
   display: grid;
   justify-items: center;
   align-items: center;
+  position: relative;
 }
 
 .modal button {
@@ -172,39 +175,53 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-family: "Raleway";
   text-shadow: none;
   margin-bottom: 0.5rem;
 }
 
-@media (max-width: 1200px) {
-  /* .circles {
-    width: 100%;
-    justify-content: center;
-    gap: 2rem;
-  } */
-}
-
-
 @media (max-width: 575px) {
+  h1 {
+    font-size: 36px;
+  }
+
   .container {
     width: auto;
-    height: 100%;
-    padding-top: 2rem;
+    height: 100vh;
+    background-position: 25% 75%;
   }
+
   .buttons-container {
     display: flex;
     flex-direction: column;
   }
 
   .circles {
-    width: auto;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem;
+    padding-bottom: 1rem;
   }
 
   .circle {
-    /* flex: 0 0 45%; */
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .circle.active {
+    background-size: 150px;
+  }
+
+  .modal {
+    width: 90%;
+  }
+
+  .back-button {
+    bottom: 10px;
+    width: 6rem;
+  }
+
+  footer > h5 {
+    font-size: 0.6rem;
   }
 }
