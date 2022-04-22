@@ -5,8 +5,9 @@ import GameOver from "./components/GameOver";
 import { circles } from "./circles";
 import ButtonsDifficulty from "./components/ButtonsDifficulty";
 
-import startMusic from "./assets/sounds/summer-night-piano-solo.mp3";
-import stopMusic from "./assets/sounds/level-win.mp3";
+// import startMusic from "./assets/sounds/summer-night-piano-solo.mp3";
+import startMusic from "./assets/sounds/chill-hiphop-2.mp3";
+import stopMusic from "./assets/sounds/stingers.mp3";
 import click from "./assets/sounds/interface-click.wav";
 
 import coverPhoto from "./assets/images/cover-photo-4.png";
@@ -180,7 +181,6 @@ class App extends Component {
         showGameOver: false,
         score: 0,
         current: -1,
-        showGameOver: false,
         pace: 1500,
         rounds: 0, //How many turns a player can miss before ending the game
         gameOn: false,
