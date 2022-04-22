@@ -29,8 +29,6 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  /* justify-content: start; */
-
   align-items: center;
   flex-direction: column;
   gap: 2rem;
@@ -180,6 +178,13 @@ footer {
   margin-bottom: 0.5rem;
 }
 
+@media (max-width: 976px) {
+  .container {
+    justify-content: center;
+    background-position: 25% 75%;
+  }
+}
+
 @media (max-width: 575px) {
   h1 {
     font-size: 36px;
@@ -188,7 +193,6 @@ footer {
   .container {
     width: auto;
     height: 100vh;
-    background-position: 25% 75%;
   }
 
   #speed-game {
