@@ -195,8 +195,12 @@ footer {
     height: 100vh;
   }
 
+  #author {
+    margin-top: 0;
+  }
+
   #speed-game {
-    padding: 1rem 0 1rem;
+    padding: 0 0 1rem;
   }
 
   .buttons-container {
