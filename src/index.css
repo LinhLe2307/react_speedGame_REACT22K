@@ -77,8 +77,8 @@ h1 {
 }
 
 .circle {
-  height: 140px;
-  width: 140px;
+  height: 130px;
+  width: 130px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -92,7 +92,7 @@ h1 {
   background-color: #fff225;
   background: url("./assets/images/Shiba.png");
   background-position: center;
-  background-size: 210px;
+  background-size: 200px;
 }
 
 button {
