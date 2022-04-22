@@ -59,7 +59,7 @@ h1 {
   color: #ffffff;
 }
 
-.gamearea>h2 {
+.gamearea > h2 {
   color: #ffffff;
 }
 
@@ -186,13 +186,13 @@ footer {
   } */
 }
 
+
 @media (max-width: 575px) {
   .container {
     width: auto;
     height: 100%;
     padding-top: 2rem;
   }
-
   .buttons-container {
     display: flex;
     flex-direction: column;

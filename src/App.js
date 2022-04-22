@@ -89,18 +89,12 @@ class App extends Component {
   };
 
   startPlay = () => {
-    if (startSound.paused) {
-      startSound.play();
-    } else {
-      startSound.currentTime = 0;
-    }
+    startSound.currentTime = 0;
+    startSound.play();
   };
   stopPlay = () => {
-    if (stopSound.paused) {
-      stopSound.play();
-    } else {
-      stopSound.currentTime = 0;
-    }
+    stopSound.currentTime = 0;
+    stopSound.play();
   };
 
   clickHandler = (i) => {
@@ -234,7 +228,6 @@ class App extends Component {
             <h2 id="author">Linh Le</h2>
             <div className="buttons-container">
               <h1 id="speed-game">Speedgame</h1>
-
               <ButtonsDifficulty click={this.gameSetHandler} />
             </div>
           </>
