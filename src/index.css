@@ -29,7 +29,8 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  /* justify-content: start; */
+
   align-items: center;
   flex-direction: column;
   gap: 2rem;
@@ -43,16 +44,17 @@ h1 {
   background: linear-gradient(145deg, #e2e8ec, #ffffff);
   box-shadow: var(--background-shadow);
   border-radius: 15px;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 
 #author {
+  margin-top: 2rem;
   font-size: 2rem;
   /* align-items: flex-start; */
 }
 
 #speed-game {
-  padding: 0rem 0rem 1rem;
+  padding: 2rem 0rem 1rem;
 }
 
 #title {
@@ -189,9 +191,15 @@ footer {
     background-position: 25% 75%;
   }
 
+  #speed-game {
+    padding: 1rem 0 1rem;
+  }
+
   .buttons-container {
     display: flex;
     flex-direction: column;
+    padding-top: 2rem;
+    width: 70%;
   }
 
   .circles {
