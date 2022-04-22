@@ -69,10 +69,7 @@ h1 {
 
 .circles {
   padding: 2rem;
-  /* display: flex;
-  flex-flow: row wrap; */
   margin: 0 auto;
-  /* justify-content: space-between; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
@@ -80,8 +77,8 @@ h1 {
 }
 
 .circle {
-  height: 140px;
-  width: 140px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
