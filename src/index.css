@@ -125,15 +125,15 @@ button:hover {
 }
 
 .modal {
-  background: white;
   padding: 1rem;
   width: 40%;
   min-height: 30%;
-  border-radius: 5px;
+  border-radius: 15px;
   display: grid;
   justify-items: center;
   align-items: center;
   position: relative;
+  background: linear-gradient(145deg, #e2e8ec, #ffffff);
 }
 
 .modal button {
