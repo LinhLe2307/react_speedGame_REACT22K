@@ -45,6 +45,7 @@ class App extends Component {
 
   timer = undefined; // before we don't have it, it will be undefined. We use variable because we define it in 2 different places, start and end functions.
 
+  // GAME DIFFICULTY
   circlesDifficulty = {
     easy: {
       length: 4,
@@ -77,6 +78,7 @@ class App extends Component {
     );
   };
 
+  // AUDIO PLAY
   //create a new handler for sound, since this is a totally separate function
   clickPlay = () => {
     if (clickSound.paused) {
@@ -96,6 +98,7 @@ class App extends Component {
     stopSound.play();
   };
 
+  // CLICK CIRCLE
   clickHandler = (i) => {
     this.clickPlay();
     if (this.state.playingGame.current !== i) {

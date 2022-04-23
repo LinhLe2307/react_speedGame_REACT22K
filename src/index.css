@@ -18,6 +18,7 @@ body {
   font-family: "Rubik Moonrocks", cursive;
   color: rgb(255, 255, 255);
   /* background-attachment: fixed; */
+
   text-align: center;
   text-shadow: var(--text-shadow);
 }
@@ -77,8 +78,8 @@ h1 {
 }
 
 .circle {
-  height: 140px;
-  width: 140px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -92,7 +93,7 @@ h1 {
   background-color: #fff225;
   background: url("./assets/images/Shiba.png");
   background-position: center;
-  background-size: 210px;
+  background-size: 230px;
 }
 
 button {
