@@ -62,20 +62,17 @@ class App extends Component {
   };
 
   gameSetHandler = (level) => {
-    this.setState(
-      (prevState) => ({
-        gameDifficulty: {
-          ...prevState.gameDifficulty,
-          buttonsLevel: false,
-          gameLevel: this.circlesDifficulty[level].length, // take the length of chosen level in circlesDifficulty
-          backgroundImage: this.circlesDifficulty[level].backgroundImage, // take the length of chosen backgroundImage in circlesDifficulty
-          circlesArray: circles.filter(
-            (circle) => circle.id <= this.circlesDifficulty[level].length
-          ),
-        },
-      }),
-      () => console.log(this.state.gameLevel)
-    );
+    this.setState((prevState) => ({
+      gameDifficulty: {
+        ...prevState.gameDifficulty,
+        buttonsLevel: false,
+        gameLevel: this.circlesDifficulty[level].length, // take the length of chosen level in circlesDifficulty
+        backgroundImage: this.circlesDifficulty[level].backgroundImage, // take the length of chosen backgroundImage in circlesDifficulty
+        circlesArray: circles.filter(
+          (circle) => circle.id <= this.circlesDifficulty[level].length
+        ),
+      },
+    }));
   };
 
   // AUDIO PLAY
