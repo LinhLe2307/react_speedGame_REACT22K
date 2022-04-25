@@ -267,7 +267,8 @@ class App extends Component {
           </div>
         )}
         <footer>
-          <h5>All the pictures are licensed under the Unsplash License</h5>
+          <h5>Beat is produced by <span>Redloxbeats</span>.</h5>
+          <h5>All the pictures are licensed under the <span>Unsplash</span> License.</h5>
         </footer>
         {this.state.playingGame.showGameOver && (
           <GameOver

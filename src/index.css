@@ -17,22 +17,27 @@
 body {
   font-family: "Rubik Moonrocks", cursive;
   color: rgb(255, 255, 255);
-  /* background-attachment: fixed; */
-
   text-align: center;
   text-shadow: var(--text-shadow);
+  max-width: 1750px;
+  margin: 0 auto;
+}
+
+span {
+  font-weight: 900;
 }
 
 .container {
   background: white;
   background-size: cover;
   /* background-position: 0 10%; */
-  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 2rem;
+  text-align: center;
+  position: relative;
 }
 
 h1 {
@@ -43,7 +48,7 @@ h1 {
   background: linear-gradient(145deg, #e2e8ec, #ffffff);
   box-shadow: var(--background-shadow);
   border-radius: 15px;
-  padding: 0 2rem 3rem;
+  padding: 0 3rem 4rem;
 }
 
 #author {
@@ -53,7 +58,7 @@ h1 {
 }
 
 #speed-game {
-  padding: 3rem 0rem 1rem;
+  padding: 4rem 0rem 1rem;
 }
 
 #title {
